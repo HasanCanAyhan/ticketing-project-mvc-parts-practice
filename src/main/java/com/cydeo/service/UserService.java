@@ -8,5 +8,6 @@ import java.util.List;
 //                                                       unique is String :username
 public interface UserService extends CRUDService<UserDTO,String> {
 
+    List<UserDTO> getManagers();
 
 }
