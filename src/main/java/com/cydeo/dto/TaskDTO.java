@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -18,16 +18,16 @@ public class TaskDTO {
     private Long id;
 
 
-    @NotNull
+    //@NotNull
     private ProjectDTO project;
 
-    @NotNull
+    //@NotNull
     private UserDTO assignedEmployee;
 
-    @NotBlank
+    //@NotBlank
     private String taskSubject;
 
-    @NotBlank
+    //@NotBlank
     private String taskDetail;
 
 

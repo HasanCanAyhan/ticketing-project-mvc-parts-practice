@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -18,21 +18,21 @@ public class ProjectDTO {
     //except String, others are Problem
 
 
-    @NotBlank
+    //@NotBlank
     private String projectName;
-    @NotBlank
+    //@NotBlank
     private String projectCode;
 
-    @NotNull
+    //@NotNull
     private UserDTO assignedManager;
-    @NotNull
+    //@NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
-    @NotNull
+    //@NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    @NotBlank
+    //@NotBlank
     private String projectDetail;
     private Status projectStatus;
 
