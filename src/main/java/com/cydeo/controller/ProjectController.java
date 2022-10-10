@@ -86,6 +86,22 @@ public class ProjectController {
     }
 
 
+    //PROJECT STATUS PAGE
+    //Manager Folder --->>> project-status.html
+
+    @GetMapping("/manager/project-status")
+    public String getProjectStatusPage(Model model){
+
+        UserDTO manager = userService.findById("john@cydeo.com");
+
+       //Unfinished / Completed
+
+        List<ProjectDTO> projectList = projectService.getAllProjectsFromTheManagers(manager);
+
+        model.addAttribute("projects",projectList);
+
+        return "/manager/project-status";
+    }
 
 
 

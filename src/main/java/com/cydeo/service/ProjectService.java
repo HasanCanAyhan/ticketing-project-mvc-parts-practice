@@ -9,4 +9,6 @@ public interface ProjectService extends CRUDService<ProjectDTO, String>{
 
     void complete(String id);
 
+    List<ProjectDTO> getAllProjectsFromTheManagers(UserDTO manager);
+
 }

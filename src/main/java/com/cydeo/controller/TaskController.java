@@ -136,17 +136,4 @@ public class TaskController {
 
 
 
-
-    //PROJECT STATUS PAGE
-
-    @GetMapping("/status")
-    public String getProjectStatusPage(Model model){
-
-       // model.addAttribute("tasks", taskService.readAll());
-
-        return "/task/status-update";
-    }
-
-
-
 }
