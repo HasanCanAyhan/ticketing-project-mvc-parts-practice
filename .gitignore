@@ -1,2 +1,5 @@
 /.idea/
 /ticketing-project-mvc.iml
+/.target/
+test
+
