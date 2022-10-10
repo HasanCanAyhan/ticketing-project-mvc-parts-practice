@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl extends AbstractMapServiceDB<TaskDTO,Long> implements TaskService {
@@ -64,4 +65,21 @@ public class TaskServiceImpl extends AbstractMapServiceDB<TaskDTO,Long> implemen
     public void deleteById(Long id) {
         super.deleteById(id);
     }
+
+
+    @Override
+    public List<TaskDTO> getTasksWhichAreNotCompleted() {
+        return readAll().stream()
+                .filter(taskDTO -> taskDTO.getTaskStatus() != Status.COMPLETE)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TaskDTO> getTasksWhichAreCompleted() {
+        return readAll().stream()
+                .filter(taskDTO -> taskDTO.getTaskStatus() == Status.COMPLETE)
+                .collect(Collectors.toList());
+    }
+
+
 }

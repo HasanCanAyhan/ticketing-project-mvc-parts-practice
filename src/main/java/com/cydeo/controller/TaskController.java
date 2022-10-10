@@ -85,6 +85,44 @@ public class TaskController {
     }
 
 
+    //PENDING TASKS
+
+    @GetMapping("/pendingTask")
+    public String getPendingTaskPage(Model model){
+
+        //model.addAttribute("tasks", taskService.readAll());
+        model.addAttribute("tasks", taskService.getTasksWhichAreNotCompleted());
+
+        return "/task/pending-tasks";
+
+    }
+
+
+    //ARCHIVE TASKS
+
+    @GetMapping("/archiveTask")
+    public String getArchiveTasksPage(Model model){
+
+        model.addAttribute("tasks", taskService.getTasksWhichAreCompleted());
+
+        return "task/archive";
+    }
+
+
+
+
+
+
+    //PROJECT STATUS PAGE
+
+    @GetMapping("/status")
+    public String getProjectStatusPage(Model model){
+
+       // model.addAttribute("tasks", taskService.readAll());
+
+        return "/task/status-update";
+    }
+
 
 
 }
