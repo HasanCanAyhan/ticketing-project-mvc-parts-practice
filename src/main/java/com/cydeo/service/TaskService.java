@@ -9,4 +9,6 @@ public interface TaskService extends CRUDService<TaskDTO,Long>{
     List<TaskDTO> getTasksWhichAreNotCompleted();
     List<TaskDTO> getTasksWhichAreCompleted();
 
+    void updateStatus(Long id,TaskDTO task);
+
 }

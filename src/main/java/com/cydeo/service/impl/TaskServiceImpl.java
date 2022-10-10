@@ -81,5 +81,12 @@ public class TaskServiceImpl extends AbstractMapServiceDB<TaskDTO,Long> implemen
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void updateStatus(Long id, TaskDTO task) {
+
+        findById(id).setTaskStatus(task.getTaskStatus());
+
+    }
+
 
 }

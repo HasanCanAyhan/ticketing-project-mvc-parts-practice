@@ -1,6 +1,7 @@
 package com.cydeo.controller;
 
 import com.cydeo.dto.TaskDTO;
+import com.cydeo.enums.Status;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.TaskService;
 import com.cydeo.service.UserService;
@@ -107,6 +108,29 @@ public class TaskController {
 
         return "task/archive";
     }
+
+    //INSIDE PENDING TASKS - UPDATE BUTTON
+
+    @GetMapping("/employee/edit/{id}")
+    public String editEmployeeTaskStatus(@PathVariable Long id, Model model){
+
+        model.addAttribute("task", taskService.findById(id));
+        model.addAttribute("statuses", Status.values());
+        model.addAttribute("tasks", taskService.getTasksWhichAreNotCompleted());
+
+        return "/task/status-update";
+
+    }
+
+    @PostMapping("/employee/update/{id}")
+    public String updateEmployeeTaskStatus(@PathVariable Long id, @ModelAttribute("task") TaskDTO task){
+
+        taskService.updateStatus(id,task);
+
+        return "redirect:/task/pendingTask";
+    }
+
+
 
 
 
