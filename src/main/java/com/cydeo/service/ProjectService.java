@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ProjectService extends CRUDService<ProjectDTO, String>{
 
-
+    void complete(String id);
 
 }

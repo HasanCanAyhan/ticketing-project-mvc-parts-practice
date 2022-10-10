@@ -6,10 +6,7 @@ import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,8 +39,54 @@ public class ProjectController {
 
         projectService.save(project);
 
-        return "redirect:/create";
+        return "redirect:/project/create";
     }
+
+
+    //delete button
+
+    @GetMapping("/delete/{id}")
+    public String deleteProject(@PathVariable String id){
+
+        projectService.deleteById(id);
+
+        return "redirect:/project/create";
+    }
+
+    //complete button
+
+    @GetMapping("/complete/{id}")
+    public String completeProject(@PathVariable String id){
+
+        projectService.complete(id);
+
+        return "redirect:/project/create";
+    }
+
+    //update button
+
+    @GetMapping("/update/{id}")
+    public String editProject(@PathVariable String id, Model model){
+
+        model.addAttribute("project", projectService.findById(id));
+        model.addAttribute("managers", userService.getManagers());
+        model.addAttribute("projects",projectService.readAll());
+
+
+        return "/project/update";
+    }
+
+    @PostMapping("/update")
+    public String updateProject(@ModelAttribute("project") ProjectDTO project){
+
+        projectService.update(project);
+
+        return "redirect:/project/create";
+    }
+
+
+
+
 
 
 }
